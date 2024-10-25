@@ -11,14 +11,15 @@ import { X } from 'lucide-react'
 
 
 export default function AnnualRaiseCalculator() {
-  const firebaseConfig = {
-        apiKey: "AIzaSyBL8ZD3V-Pq2WFVl02jD_VjGhpE71Pzpxs",
-        authDomain: "raise-average.firebaseapp.com",
-        projectId: "raise-average",
-        storageBucket: "raise-average.appspot.com",
-        messagingSenderId: "927961867147",
-        appId: "1:927961867147:web:5d311c2dd6efef5ea3858e",
-        measurementId: "G-B25H82B1XR"
+    const firebaseConfig = {
+        apiKey: "AIzaSyC0Jhjs6Yjz2J9RCIfdgiV0sz3jvGguE-c",
+        authDomain: "raiseaverage.firebaseapp.com",
+        databaseURL: "https://raiseaverage-default-rtdb.firebaseio.com",
+        projectId: "raiseaverage",
+        storageBucket: "raiseaverage.appspot.com",
+        messagingSenderId: "520576817747",
+        appId: "1:520576817747:web:e09751ba8c727853e384a6",
+        measurementId: "G-ZVC82EZVWC"
       };
       
   const app = initializeApp(firebaseConfig);

@@ -37,13 +37,15 @@ export default function AnnualRaiseCalculator() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const newValue = parseFloat(inputValue)
-    if (newValue < 0 || newValue > 30) {
+    const intValue = parseInt(inputValue)
+    if (intValue < 0 || intValue > 30) {
         setValidation(true)
         setShowPopup(true)
         setInputValue('')
         return
     }
+    const newValue = parseFloat(inputValue)
+    
     if (!isNaN(newValue)) {
 
       update(totalSumRef, {value: increment(newValue)}).then(() => {

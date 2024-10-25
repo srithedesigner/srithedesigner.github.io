@@ -62,16 +62,13 @@ export default function AnnualRaiseCalculator() {
   useEffect(() => {
   onValue(totalSumRef, (snapshot) => {
     const data = snapshot.val();
-    var data_float = parseFloat(data?.value || 0);
+    const data_float = parseFloat(data?.value || 0);
     console.log("VAISHNAV", data_float)
+    
     if (count != 0) {
-        var average = parseFloat((data_float / count).toFixed(2));
-    } else {
-        var average = 0;
+        setAverage(parseFloat((data_float / count).toFixed(2)));
     }
     console.log("VAISHNAV AVERAGE", average, count)
-
-    setAverage(average);
 
   });
 

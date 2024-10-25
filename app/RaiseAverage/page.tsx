@@ -30,10 +30,20 @@ export default function AnnualRaiseCalculator() {
   const [count, setCount] = useState(0)
   const [inputValue, setInputValue] = useState('')
   const [showPopup, setShowPopup] = useState(false)
+  const [validation, setValidation] = useState(false)
+
+
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     const newValue = parseFloat(inputValue)
+    if (newValue < 0 || newValue > 30) {
+        setValidation(true)
+        setShowPopup(true)
+        setInputValue('')
+        return
+    }
     if (!isNaN(newValue)) {
 
       update(totalSumRef, {value: increment(newValue)}).then(() => {
@@ -44,6 +54,7 @@ export default function AnnualRaiseCalculator() {
         console.log('Updated count')
       });
 
+      setValidation(false)
       setShowPopup(true);
       setInputValue('')
     }
@@ -109,8 +120,8 @@ export default function AnnualRaiseCalculator() {
             >
               <X />
             </button>
-            <Image alt = "thomas shelby cigarette gif" src="images/thank.jpeg" width={300} height={300}></Image>
-            <p className="text-xl font-bold mt-4">Thank you for your contribution</p>
+            <Image alt = "thomas shelby cigarette gif" src={validation ? "images/mirz.jpeg" : "images/thank.jpeg"} width={300} height={300}></Image>
+            <p className="text-xl font-bold mt-4"> { validation ? "BKL sahi number bataa" : "Thank you for your contribution"}</p>
           </div>
         </div>
       )}

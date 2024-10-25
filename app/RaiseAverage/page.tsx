@@ -79,7 +79,8 @@ export default function AnnualRaiseCalculator() {
     console.log("VAISHNAV", data_float)
     
     if (count != 0) {
-        setAverage(parseFloat((data_float / count).toFixed(2)));
+        const roundedAverage = Math.round((data_float / count) * 100) / 100;
+        setAverage(roundedAverage);
     }
     console.log("VAISHNAV AVERAGE", average, count)
 

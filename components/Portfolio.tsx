@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Linkedin, Github, Instagram, X } from 'lucide-react'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
@@ -171,11 +172,12 @@ export default function EnhancedPortfolio() {
               perpetual learner full-time
             </p>
           </div>
-          <button 
-            className="border-4 border-black px-6 py-3 bg-yellow-300 hover:bg-yellow-400 active:translate-y-1 text-xl font-bold mb-4"
+          <Link 
+            href="/blog"
+            className="inline-block border-4 border-black px-6 py-3 bg-yellow-300 hover:bg-yellow-400 active:translate-y-1 text-xl font-bold mb-4"
           >
             Read my Blog
-          </button>
+          </Link>
           <div className="mb-8">
             <h2 className="text-2xl font-bold mb-4 border-b-4 border-black">Work Experience</h2>
             

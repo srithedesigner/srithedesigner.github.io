@@ -173,7 +173,7 @@ export default function EnhancedPortfolio() {
             </p>
           </div>
           <Link 
-            href="/blog"
+            href="/blogs"
             className="inline-block border-4 border-black px-6 py-3 bg-yellow-300 hover:bg-yellow-400 active:translate-y-1 text-xl font-bold mb-4"
           >
             Read my Blog

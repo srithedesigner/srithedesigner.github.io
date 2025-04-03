@@ -111,7 +111,7 @@ export default function BlogPage() {
         {!isLoading && !error && filteredBlogs.length > 0 && (
           <div className="grid gap-8">
             {filteredBlogs.map((blog) => (
-              <Link href={`/blog/${blog.slug}`} key={blog.id} className="block group">
+              <Link href={`/blogs/${blog.slug}`} key={blog.id} className="block group">
                 <article className="border-4 border-black bg-white overflow-hidden transition-all hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
                   <div className="relative h-48 sm:h-64 overflow-hidden border-b-4 border-black">
                     <Image 

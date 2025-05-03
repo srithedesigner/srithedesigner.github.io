@@ -20,6 +20,7 @@ export default function BlogPage() {
       try {
         setIsLoading(true)
         const blogData = await getAllBlogPosts()
+        console.log(blogData)
         setBlogs(blogData)
         setFilteredBlogs(blogData)
         setIsLoading(false)

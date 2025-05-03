@@ -142,7 +142,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         
         {/* Navigation */}
         <div className="flex flex-wrap gap-4">
-          <Link href="/blog" className="inline-block border-4 border-black px-4 py-2 bg-white hover:bg-gray-100 font-bold transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <Link href="/blogs" className="inline-block border-4 border-black px-4 py-2 bg-white hover:bg-gray-100 font-bold transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <ArrowLeft className="inline mr-2 w-4 h-4" />
             Back to Blog List
           </Link>

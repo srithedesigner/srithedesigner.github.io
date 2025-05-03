@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, get, child, query, orderByChild, equalTo, limitToFirst } from 'firebase/database';
 import { BlogPost } from './blog-types';

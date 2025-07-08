@@ -161,7 +161,7 @@
         }
 
         const data = await response.json();
-        const { websites_scraped, sorted_prices } = data;
+        const { websites_scraped, sorted_prices } = data.result;
 
         // Clear loading message
         resultsDiv.innerHTML = "";

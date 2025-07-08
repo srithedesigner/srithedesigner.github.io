@@ -53,6 +53,14 @@
     .results {
       margin-top: 30px;
     }
+    .websites {
+      margin-top: 20px;
+      padding: 10px;
+      background: #e8f5e9;
+      border-radius: 5px;
+      font-size: 14px;
+      color: #2e7d32;
+    }
     .result-item {
       border: 1px solid #eee;
       border-radius: 8px;
@@ -90,12 +98,11 @@
 </head>
 <body>
   <div class="container">
-    <h1> Global Price Finder</h1>
+    <h1>🌍 Global Price Finder</h1>
     <form id="searchForm">
       <div>
         <label for="country">Select Country</label>
         <select id="country" required>
-          <!-- Full list of countries -->
           <option value="India">India</option>
           <option value="United States">United States</option>
           <option value="United Kingdom">United Kingdom</option>
@@ -105,43 +112,6 @@
           <option value="France">France</option>
           <option value="Italy">Italy</option>
           <option value="Spain">Spain</option>
-          <option value="Brazil">Brazil</option>
-          <option value="Mexico">Mexico</option>
-          <option value="Japan">Japan</option>
-          <option value="China">China</option>
-          <option value="Singapore">Singapore</option>
-          <option value="South Africa">South Africa</option>
-          <option value="UAE">UAE</option>
-          <option value="Saudi Arabia">Saudi Arabia</option>
-          <option value="Netherlands">Netherlands</option>
-          <option value="Sweden">Sweden</option>
-          <option value="Switzerland">Switzerland</option>
-          <option value="Turkey">Turkey</option>
-          <option value="Russia">Russia</option>
-          <option value="Indonesia">Indonesia</option>
-          <option value="Malaysia">Malaysia</option>
-          <option value="Thailand">Thailand</option>
-          <option value="Vietnam">Vietnam</option>
-          <option value="Philippines">Philippines</option>
-          <option value="Argentina">Argentina</option>
-          <option value="Chile">Chile</option>
-          <option value="Colombia">Colombia</option>
-          <option value="Egypt">Egypt</option>
-          <option value="Nigeria">Nigeria</option>
-          <option value="Kenya">Kenya</option>
-          <option value="South Korea">South Korea</option>
-          <option value="New Zealand">New Zealand</option>
-          <option value="Pakistan">Pakistan</option>
-          <option value="Bangladesh">Bangladesh</option>
-          <option value="Poland">Poland</option>
-          <option value="Portugal">Portugal</option>
-          <option value="Greece">Greece</option>
-          <option value="Norway">Norway</option>
-          <option value="Denmark">Denmark</option>
-          <option value="Finland">Finland</option>
-          <option value="Ireland">Ireland</option>
-          <option value="Belgium">Belgium</option>
-          <option value="Austria">Austria</option>
         </select>
       </div>
       <div>
@@ -150,6 +120,7 @@
       </div>
       <button type="submit">🔍 Search</button>
     </form>
+    <div class="websites" id="websites"></div>
     <div class="results" id="results"></div>
   </div>
 
@@ -161,7 +132,9 @@
 
       // Clear previous results
       const resultsDiv = document.getElementById("results");
+      const websitesDiv = document.getElementById("websites");
       resultsDiv.innerHTML = "";
+      websitesDiv.innerHTML = "";
 
       // Get form values
       const country = document.getElementById("country").value;
@@ -188,20 +161,27 @@
         }
 
         const data = await response.json();
-        const items = data.sorted_prices || [];
+        const { websites_scraped, sorted_prices } = data;
 
         // Clear loading message
         resultsDiv.innerHTML = "";
 
-        if (items.length === 0) {
+        // Display websites scraped
+        if (websites_scraped.length > 0) {
+          websitesDiv.innerHTML = `<strong>Websites Scraped:</strong> ${websites_scraped.join(", ")}`;
+        } else {
+          websitesDiv.innerHTML = `<strong>No websites were successfully scraped.</strong>`;
+        }
+
+        // Display results
+        if (sorted_prices.length === 0) {
           const noResultsMessage = document.createElement("p");
           noResultsMessage.textContent = "No prices found. Try a different product or country.";
           resultsDiv.appendChild(noResultsMessage);
           return;
         }
 
-        // Display results
-        items.forEach((item) => {
+        sorted_prices.forEach((item) => {
           const resultItem = document.createElement("div");
           resultItem.className = "result-item";
 
